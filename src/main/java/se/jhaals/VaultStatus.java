@@ -1,3 +1,4 @@
+package se.jhaals;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class VaultStatus {

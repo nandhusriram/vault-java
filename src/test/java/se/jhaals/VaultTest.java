@@ -1,11 +1,20 @@
+package se.jhaals;
 import junit.framework.TestCase;
+import se.jhaals.TokenCreateRequest;
+import se.jhaals.TokenCreateRequestBuilder;
+import se.jhaals.TokenResponse;
+import se.jhaals.Vault;
+import se.jhaals.VaultException;
+import se.jhaals.VaultResponse;
+import se.jhaals.VaultStatus;
+
 import org.junit.Before;
 
 import java.util.HashMap;
 
 public class VaultTest extends TestCase {
 
-    private String token = System.getenv("VAULT_TOKEN");
+    private String token ="58814236-a03e-ed0d-3a5a-d49ecc941c8e";
     private Vault vault;
 
     @Before
@@ -48,8 +57,8 @@ public class VaultTest extends TestCase {
 
     public void testGetStatus() throws Exception {
         VaultStatus vaultStatus = vault.getStatus();
-        assertEquals(vaultStatus.getKeyShares(), 1);
-        assertEquals(vaultStatus.getKeyThreshold(), 1);
+        assertEquals(vaultStatus.getKeyShares(), 5);
+        assertEquals(vaultStatus.getKeyThreshold(), 3);
         assertEquals(vaultStatus.getProgress(), 0);
         assertEquals(vaultStatus.isSealed(), false);
     }
