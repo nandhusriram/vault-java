@@ -8,10 +8,14 @@ import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TokenCreateRequest {
-    private String id;
-    private List<String> policies;
-    private Map<String, String> meta;
-    private int Ttl;
+    @SuppressWarnings("unused")
+	private String id;
+    @SuppressWarnings("unused")
+	private List<String> policies;
+    @SuppressWarnings("unused")
+	private Map<String, String> meta;
+    @SuppressWarnings("unused")
+	private int Ttl;
 
     @JsonProperty("display_name")
     private String displayName;

@@ -2,7 +2,11 @@ package se.jhaals;
 import java.util.List;
 
 public class VaultException extends RuntimeException {
-    private final int statusCode;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3167962562053243558L;
+	private final int statusCode;
     private final List<String> messages;
 
     public VaultException(int statusCode, List<String> messages) {
