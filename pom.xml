@@ -19,9 +19,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/jhaals/vault-java</url>
-        <connection>scm:git:git@github.com:jhaals/vault-java.git</connection>
-        <developerConnection>scm:git:git@github.com:jhaals/vault-java.git</developerConnection>
+        <url>https://github.com/nandhusriram/vault-java.git</url>
+        <connection>scm:git:git@github.com:nandhusriram/vault-java.git</connection>
+        <developerConnection>scm:git:git@github.com:nandhusriram/vault-java.git</developerConnection>
     </scm>
 
     <issueManagement>
@@ -35,6 +35,12 @@
             <email>johan.haals@gmail.com</email>
             <url>https://github.com/jhaals</url>
             <id>jhaals</id>
+        </developer>
+        <developer>
+            <name>Nandhu Sriram</name>
+            <email>nandhusriram@gmail.com</email>
+            <url>https://github.com/nandhusriram</url>
+            <id>nandhusriram</id>
         </developer>
     </developers>
 
@@ -70,7 +76,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -80,7 +86,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
