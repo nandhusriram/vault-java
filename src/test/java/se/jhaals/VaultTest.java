@@ -14,12 +14,12 @@ import java.util.HashMap;
 
 public class VaultTest extends TestCase {
 
-    private String token ="58814236-a03e-ed0d-3a5a-d49ecc941c8e";
+    private String token ="8f6fb0ba-6c3b-ca09-170b-b5e1d8f41dba";
     private Vault vault;
 
     @Before
     public void setUp() {
-        this.vault = new Vault("http://127.0.0.1:8200", token);
+        this.vault = new Vault("http://127.0.0.1:8200",token);
     }
 
     public void testWrite() throws Exception {
@@ -57,14 +57,14 @@ public class VaultTest extends TestCase {
 
     public void testGetStatus() throws Exception {
         VaultStatus vaultStatus = vault.getStatus();
-        assertEquals(vaultStatus.getKeyShares(), 5);
-        assertEquals(vaultStatus.getKeyThreshold(), 3);
+        assertEquals(vaultStatus.getKeyShares(), 1);
+        assertEquals(vaultStatus.getKeyThreshold(), 1);
         assertEquals(vaultStatus.getProgress(), 0);
         assertEquals(vaultStatus.isSealed(), false);
     }
 
     public void testLookupToken() throws Exception {
-       assertEquals(vault.lookupToken(this.token).getData().getDisplayName(), "root");
+       assertEquals(vault.lookupToken(this.token).getData().getDisplayName(), "app-id-demo");
     }
 
     public void testCreateToken() throws Exception {

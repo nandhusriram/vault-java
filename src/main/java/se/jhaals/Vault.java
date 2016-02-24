@@ -1,6 +1,6 @@
 package se.jhaals;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -8,8 +8,9 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
 /**
  * Java API for Hashicorp's Vault project. A tool for managing secrets.
@@ -21,6 +22,26 @@ public class Vault {
     private final String vaultToken;
     private final Client client;
     private WebTarget baseTarget;
+    
+    protected static class EnvironmentLoader {
+        public String loadVariable(final String name) {
+            return System.getenv(name);
+        }
+    }
+    
+	/**
+	 * Initialize Vault
+	 *
+	 * @param vaultServer
+	 *            http address to vault server, example: http://127.0.0.1:8200
+	 
+	 */
+	public Vault(String vaultServer) {
+		EnvironmentLoader environmentLoader = new EnvironmentLoader();
+		this.vaultToken = environmentLoader.loadVariable("VAULT_TOKEN");
+		this.client = ClientBuilder.newBuilder().register(JacksonJaxbJsonProvider.class).build();
+		this.baseTarget = client.target(vaultServer);
+	}
 
     /**
      * Initialize Vault
