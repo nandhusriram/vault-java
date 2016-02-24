@@ -29,6 +29,22 @@ public class Vault {
         }
     }
     
+    /**
+	 * Initialize Vault
+	 *
+	 *export VAULT_ADDR='http://127.0.0.1:8200'
+	 *export VAULT_TOKEN=8f6fb0ba-6c3b-ca09-170b-b5e1d8f41dba
+	 * 
+	 
+	 */
+	public Vault() {
+		EnvironmentLoader environmentLoader = new EnvironmentLoader();
+		this.vaultToken = environmentLoader.loadVariable("VAULT_TOKEN");
+		String vaultServer=environmentLoader.loadVariable("VAULT_ADDR");
+		this.client = ClientBuilder.newBuilder().register(JacksonJaxbJsonProvider.class).build();
+		this.baseTarget = client.target(vaultServer);
+	}
+    
 	/**
 	 * Initialize Vault
 	 *
