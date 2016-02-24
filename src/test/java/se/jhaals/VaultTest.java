@@ -14,12 +14,14 @@ import java.util.HashMap;
 
 public class VaultTest extends TestCase {
 
-    private String token ="8f6fb0ba-6c3b-ca09-170b-b5e1d8f41dba";
+    private String token =null;
     private Vault vault;
 
     @Before
     public void setUp() {
-        this.vault = new Vault("http://127.0.0.1:8200",token);
+    	this.vault = new Vault();
+    	this.token=System.getenv("VAULT_TOKEN");
+        
     }
 
     public void testWrite() throws Exception {
